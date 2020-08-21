@@ -3,7 +3,7 @@ import numpy as np
 import cv2
 import os
 
-IMAGES_FOLDER = r'result'
+IMAGES_FOLDER = r'static'
 
 def run(path, cluster, save=True):
     image = cv2.imread(path)
@@ -28,6 +28,7 @@ def run(path, cluster, save=True):
     
     if(save):
         for i, image in enumerate(images):
+            image = cv2.resize(image, (200,200))
             cv2.imwrite(os.path.join(IMAGES_FOLDER, f'{i}.png'), image)
     
     return images

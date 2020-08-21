@@ -1,0 +1,12 @@
+<html>
+   <body>
+        <form action = "http://localhost:5000/uploader" method = "POST" 
+            enctype = "multipart/form-data">
+            <input type = "file" name = "file" />
+            <input type = "submit"/>
+        </form>
+        {% for hist in hists %}
+            <img src="{{url_for('send_image', filename=hist)}}" alt="{{hist}}" style="width:200px;height:200px;">
+        {% endfor %}
+   </body>
+</html>
