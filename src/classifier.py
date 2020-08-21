@@ -3,7 +3,7 @@ import numpy as np
 import cv2
 import os
 
-IMAGES_FOLDER = r'images'
+IMAGES_FOLDER = r'result'
 
 def run(path, cluster, save=True):
     image = cv2.imread(path)
@@ -19,20 +19,17 @@ def run(path, cluster, save=True):
     final = km.labels_.reshape(shape)
 
     red = [0, 0, 255]
-    # green = [0, 255, 0]
-    # blue = [255, 0, 0]
-
+    
     images = [np.copy(image) for i in range(cluster)]
 
     for i, arr_el in enumerate(final):
         for j, el in enumerate(arr_el):
             images[el][i][j] = red
     
-    # for i in range(len(images)):
-    #     images[i] = cv2.resize(images[i], (200, 200))
-
     if(save):
         for i, image in enumerate(images):
             cv2.imwrite(os.path.join(IMAGES_FOLDER, f'{i}.png'), image)
     
     return images
+
+# run('images/image.png', 7)
