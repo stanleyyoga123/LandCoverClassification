@@ -6,7 +6,7 @@
             <input type = "submit"/>
         </form>
         {% for hist in hists %}
-            <img src="{{url_for('send_image', filename=hist)}}" alt="{{hist}}" style="width:200px;height:200px;">
+            <img src="{{url_for('static', filename=hist)}}" alt="{{hist}}" style="width:200px;height:200px;">
         {% endfor %}
    </body>
 </html>
