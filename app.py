@@ -25,7 +25,8 @@ def upload_file():
 
 @app.route('/', methods = ['GET'])
 def main():
-    return render_template('default.html')
+    import importlib
+    return render_template('output.html', imp0rt = importlib.import_module)
 
 @app.route('/uploader/<filename>')
 def send_image(filename):

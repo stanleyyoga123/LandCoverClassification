@@ -1,0 +1,60 @@
+<html>
+    <head>
+        <style>
+            .allImagesContainer2 {
+                display: flex;
+                flex-flow: row wrap;
+            }
+
+            .imageContainer2 {
+                background-color: white;
+                width: 200px;
+                margin: 10px;
+                text-align: center;
+                line-height: 75px;
+                font-size: 30px;
+                padding: 5px;
+                border-radius: 5px;
+            }
+            .imageContainer2:hover {
+                opacity: 0.8;
+            }
+        </style>
+    </head>
+   <body>
+       <script>
+           var imageClicked = [];
+           function buttonClicked(filename) {
+               if (imageClicked.includes(filename)) {
+                    imageClicked = imageClicked.filter(e => e != filename);
+                    document.getElementById(filename).style.backgroundColor = 'white';
+               }
+               else {
+                   imageClicked.push(filename);
+                   document.getElementById(filename).style.backgroundColor = 'blue';
+               }
+               document.getElementById('demo').innerHTML = imageClicked.toString();
+           }
+        </script>
+        <!-- <form action = "http://localhost:5000/uploader" method = "POST" 
+            enctype = "multipart/form-data">
+            <input type = "file" name = "file" />
+            <input type = "submit"/>
+        </form>
+        {% for hist in hists %}
+            <img src="{{url_for('static', filename=hist)}}" alt="{{hist}}" style="width:200px;height:200px;">
+        {% endfor %} -->
+
+        {% set os = imp0rt('os') %}
+        {% set cv2 = imp0rt('cv2') %}
+
+        <div class="allImagesContainer2">
+            {% for filename in os.listdir('./static') %}
+                <div class="imageContainer2" onclick="buttonClicked('{{ filename }}')" id="{{ filename }}">
+                    <img src="{{ os.path.join('./static', filename) }}" alt="{{ filename }}">
+                </div>
+            {% endfor %}
+        </div>
+        <p id="demo"></p>
+   </body>
+</html>
