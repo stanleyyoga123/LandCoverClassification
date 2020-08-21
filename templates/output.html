@@ -1,13 +1,17 @@
 <html>
     <head>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <style>
             .allImagesContainer2 {
                 display: flex;
                 flex-flow: row wrap;
+                background-color: #ececec;
+                width: 100%;
+                margin-bottom: 40px;
             }
 
             .imageContainer2 {
-                background-color: white;
+                background-color: #ececec;
                 width: 200px;
                 margin: 10px;
                 text-align: center;
@@ -19,18 +23,59 @@
             .imageContainer2:hover {
                 opacity: 0.8;
             }
+            .finishedTitle {
+                font-size: 30px;
+                font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+                text-align: center;
+                padding: 20px;
+                font-weight: bolder;
+            }
+            .finishedIcon {
+                color: green
+            }
+            .descTitle {
+                font-size: 20px;
+                text-align: center;
+                color: gray;
+                margin-bottom: 20px;
+                font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            }
+            .selectImageText {
+                width: 100%;
+                padding: 20px;
+                padding-top: 40px;
+                font-size: 25px;
+                text-align: center;
+                font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            }
+            .buttonContainer {
+                text-align: center;
+            }
+            .buttonDone {
+                color: green;
+                border: 1px solid green;
+                padding: 10px 30px;
+                border-radius: 10px;
+                font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            }
+            .buttonDone:hover {
+                color: white;
+                background-color: green;
+                cursor: pointer;
+            }
         </style>
     </head>
    <body>
        <script>
            var imageClicked = [];
            function buttonClicked(filename) {
-               if (imageClicked.includes(filename)) {
-                    imageClicked = imageClicked.filter(e => e != filename);
-                    document.getElementById(filename).style.backgroundColor = 'white';
+               var idx = filename.split(".")[0]
+               if (imageClicked.includes(idx)) {
+                    imageClicked = imageClicked.filter(e => e != idx);
+                    document.getElementById(filename).style.backgroundColor = '#ececec';
                }
                else {
-                   imageClicked.push(filename);
+                   imageClicked.push(idx);
                    document.getElementById(filename).style.backgroundColor = 'blue';
                }
                document.getElementById('demo').innerHTML = imageClicked.toString();
@@ -45,15 +90,27 @@
             <img src="{{url_for('static', filename=hist)}}" alt="{{hist}}" style="width:200px;height:200px;">
         {% endfor %} -->
 
+        <div class="finishedTitle">
+            <span>Finished</span>
+            <i class="fa fa-check-circle finishedIcon"></i>
+        </div>
+        <div class="descTitle">Your scanned image are shown below</div>
+
+
+
         {% set os = imp0rt('os') %}
         {% set cv2 = imp0rt('cv2') %}
 
         <div class="allImagesContainer2">
+            <div class="selectImageText">Select Yoga's Images</div>
             {% for filename in os.listdir('./static') %}
                 <div class="imageContainer2" onclick="buttonClicked('{{ filename }}')" id="{{ filename }}">
                     <img src="{{ os.path.join('./static', filename) }}" alt="{{ filename }}">
                 </div>
             {% endfor %}
+        </div>
+        <div class="buttonContainer">
+            <span class="buttonDone">Done</span>
         </div>
         <p id="demo"></p>
    </body>
