@@ -27,7 +27,6 @@ def run(path, cluster, save=True):
             images[el][i][j] = red
     
     if(save):
-        # name = path.split('\\')[-1].split('.')[0]
         name = path.split('\\')
         if(len(name) == 1):
             name = path.split('/')
