@@ -129,7 +129,7 @@
             <div class="selectImageText">Select Yoga's Images</div>
             {% for filename in os.listdir('./static') %}
                 <div class="imageContainer2" onclick="buttonClicked('{{ filename }}')" id="{{ filename }}">
-                    <img src="{{ os.path.join('./static', filename) }}" alt="{{ filename }}">
+                    <img src="{{ url_for('show_result', filename=filename) }}" alt="{{ filename }}">
                 </div>
             {% endfor %}
         </div>

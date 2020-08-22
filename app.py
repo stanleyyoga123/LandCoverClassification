@@ -41,10 +41,6 @@ def upload_file():
     else:
         return render_template('default.html')
 
-# @app.route('/', methods = ['GET'])
-# def main():
-#     return render_template('output.html', imp0rt = importlib.import_module)
-
 @app.route('/result', methods = ['POST', 'GET'])
 def combine_image():
     if request.method == 'POST':
@@ -57,13 +53,22 @@ def combine_image():
         path = os.path.join('result', filename)
         cv2.imwrite(path, image)
 
-        return render_template('output.html', imp0rt = importlib.import_module, path=filename)
+        return redirect(url_for('final', filename=filename))
     else:
         return render_template('output.html', imp0rt = importlib.import_module)
+
+@app.route('/combine/<filename>', methods = ['POST', 'GET'])
+def final(filename):
+    print(filename)
+    return render_template('output.html', imp0rt = importlib.import_module, path=filename)
 
 @app.route('/result/<filename>')
 def show_image(filename):
     return send_from_directory('result', filename)
+
+@app.route('/static/<filename>')
+def show_result(filename):
+    return send_from_directory('static', filename)
 		
 if __name__ == '__main__':
    app.run(debug = True)
