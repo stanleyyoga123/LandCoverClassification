@@ -37,7 +37,7 @@ def run(path, cluster, save=True):
 def combine(index):
     images = np.array([cv2.imread(os.path.join(IMAGES_FOLDER, path)) for path in os.listdir(IMAGES_FOLDER)])
 
-    image = images[0]
+    image = images[index[0]]
     shape = image.shape
 
     red = [0, 0, 255]

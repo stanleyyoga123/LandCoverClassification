@@ -79,7 +79,7 @@
         </div>
    <body>
     <div class = "formContent">
-        <form action = "http://localhost:5000/uploader" method = "POST" 
+        <form action = "http://localhost:5000/" method = "POST" 
             enctype = "multipart/form-data">
             <label for = quantity>Estimation (between 1 and 10):</label>
             <input type = "number" name = "quantity" min = "1" max = "10" required>
@@ -109,8 +109,5 @@
             </div>
         </form>
     </div>
-        {% for hist in hists %}
-            <img src="{{url_for('static', filename=hist)}}" alt="{{hist}}" style="width:200px;height:200px;">
-        {% endfor %}
    </body>
 </html>
