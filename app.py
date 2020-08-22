@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, send_from_directory  
+from flask import Flask, render_template, request, send_from_directory, redirect, url_for
 from werkzeug.utils import secure_filename
 import os
 from src import classifier
@@ -26,7 +26,7 @@ def remove_files():
     for file in path:
         os.remove(os.path.join('static', file))
 
-@app.route('/uploader', methods = ['GET', 'POST'])
+@app.route('/', methods = ['GET', 'POST'])
 def upload_file():
     if request.method == 'POST':
         estimator = int(request.form.get('quantity'))
@@ -38,15 +38,15 @@ def upload_file():
         
         classifier.run(os.path.join(UPLOAD_FOLDER, filename), estimator)
         hists = [f'{filename[:-4]}_{i}.png' for i in range(estimator)]
-        return render_template('default.html', hists=hists) 
+        return redirect(url_for('combine_image'))
     else:
         return render_template('default.html')
 
-@app.route('/', methods = ['GET'])
-def main():
-    return render_template('output.html', imp0rt = importlib.import_module)
+# @app.route('/', methods = ['GET'])
+# def main():
+#     return render_template('output.html', imp0rt = importlib.import_module)
 
-@app.route('/kevin', methods = ['POST', 'GET'])
+@app.route('/result', methods = ['POST', 'GET'])
 def combine_image():
     if request.method == 'POST':
         selected = request.form['data-arraySelected']
@@ -60,7 +60,7 @@ def combine_image():
 
         return render_template('output.html', imp0rt = importlib.import_module, path=filename)
     else:
-        return render_template('default.html')
+        return render_template('output.html', imp0rt = importlib.import_module)
 
 @app.route('/result/<filename>')
 def show_image(filename):
