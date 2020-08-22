@@ -6,17 +6,17 @@ from src import classifier
 app = Flask(__name__)
 
 UPLOAD_FOLDER = 'images'
-ESTIMATOR = 7
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 @app.route('/uploader', methods = ['GET', 'POST'])
 def upload_file():
     if request.method == 'POST':
+        estimator = int(request.form.get('quantity'))
         f = request.files['file']
         filename = 'image.png'
         f.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
         
-        classifier.run(os.path.join(UPLOAD_FOLDER, 'image.png'), ESTIMATOR)
+        classifier.run(os.path.join(UPLOAD_FOLDER, 'image.png'), estimator)
 
         hists = os.listdir('static')
         return render_template('default.html', hists=hists) 
