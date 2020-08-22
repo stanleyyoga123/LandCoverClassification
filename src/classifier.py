@@ -27,10 +27,15 @@ def run(path, cluster, save=True):
             images[el][i][j] = red
     
     if(save):
-        name = path.split('\\')[-1].split('.')[0]
+        name = path.split('\\')
+        if(len(name) == 1):
+            name = path.split('/')
+
+        name = name[-1].split('.')[0]
         for i, image in enumerate(images):
             image = cv2.resize(image, (200,200))
             cv2.imwrite(os.path.join(IMAGES_FOLDER, f'{name}_{i}.png'), image)
+            # cv2.imwrite(f'{name}_{i}.png', image)
     
     return images
 
