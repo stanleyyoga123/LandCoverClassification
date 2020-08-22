@@ -95,7 +95,7 @@
                 <label for="file-ip-1">Upload Image</label>
                 <input type="file" id="file-ip-1" name = "file" accept="image/*" onchange="showPreview(event);">
                 <div class="preview">
-                    <img id="file-ip-1-preview">
+                    <img id="file-ip-1-preview" >
                 </div>
               </div>
             </div>
@@ -108,6 +108,8 @@
                     preview.style.display = "block";
                     preview.style.maxHeight = 200;
                     preview.style.maxWidth = 200;
+                    preview.style.marginLeft = 'auto';
+                    preview.style.marginRight = 'auto';
                   }
                 }
             </script>
