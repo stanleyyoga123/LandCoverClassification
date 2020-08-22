@@ -1,0 +1,24 @@
+Scanning
+Pada tahap ini, program yang kami buat akan melakukan proses scanning, 
+atau bisa dibilang menerima input gambar yang berupa gambar lahan dan estimator. 
+Estimator adalah banyaknya kelas yang akan digunakan. 
+Gambar yang diterima pada tahap ini akan disalurkan ke tahap selanjutnya, yaitu Classify.
+
+Classify
+Tahap ini melakukan kalkulasi untuk menghitung atau mengklasifikasikan lahan mana saja yang bisa dibilang memiliki kemiripan. 
+Algoritma yang kami gunakan adalah salah satu algoritma dari Machine Learning, 
+yaitu KMeans yang termasuk dari salah satu algoritma Clustering unsupervised learning. 
+Algoritma ini melakukan klasifikasi dengan melihat kemiripan dari data yang diberikan. 
+Dikarenakan data yang diberikan merupakan data gambar, maka kemiripan yang dilihat adalah warnanya.
+
+Combine
+Tahap combine adalah tahap terakhir, yaitu tahap di mana user memilih lahan yang sudah diklasifikan pada tahap Classify. 
+Dikarenakan algoritma KMeans adalah algoritma untuk mengklasifikasikan berdasarkan kemiripan, 
+maka dibutuhkan campur tangan manusia untuk memverifikasi lahan yang akan digunakan.
+
+Future Improvements
+Salah satu peningkatan dari aplikasi ini adalah dengan merubah algoritma KMeans yang digunakan menjadi
+algoritma Deep Learning, terutama bidang computer vision. Hal ini dapat dilakukan dengan mengumpulkan 2 buah jenis data,
+yaitu data lahan kosong, dan data lahan yang dapat ditanami. Data lahan kosong akan difeed ke model Object Detection
+seperti RCNN, YOLO, SSD. Kemudian data lahan yang dapat ditanami akan difeed ke model Klasifikasi seperti VGG, Resnet, 
+atau EfficientNet.
