@@ -60,7 +60,7 @@ def combine_image():
 @app.route('/combine/<filename>', methods = ['POST', 'GET'])
 def final(filename):
     print(filename)
-    return render_template('output.html', imp0rt = importlib.import_module, path=filename)
+    return render_template('finish.html', imp0rt = importlib.import_module, path=filename)
 
 @app.route('/result/<filename>')
 def show_image(filename):

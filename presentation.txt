@@ -22,3 +22,12 @@ algoritma Deep Learning, terutama bidang computer vision. Hal ini dapat dilakuka
 yaitu data lahan kosong, dan data lahan yang dapat ditanami. Data lahan kosong akan difeed ke model Object Detection
 seperti RCNN, YOLO, SSD. Kemudian data lahan yang dapat ditanami akan difeed ke model Klasifikasi seperti VGG, Resnet, 
 atau EfficientNet.
+
+KMeans
+- Menentukan banyaknya cluster (estimator)
+- Menentukan point sebanyak cluster secara random 
+- Hitung jarak (euclidean distance) setiap titik terhadap tiap cluster
+- Assign titik yang sudah dihitung terhadap cluster terdekat
+- Menghitung rata-rata dari tiap cluster
+- Hitung dan assign lagi titik terhadap rata-rata dari tiap cluster
+- Lakukan sebanyak n iterasi, kemudian diambil hasil yang memiliki mean paling seimbang 

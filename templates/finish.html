@@ -49,6 +49,7 @@
                 font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
             }
             .buttonContainer {
+                margin: 20px;
                 text-align: center;
             }
             .buttonDone {
@@ -60,7 +61,6 @@
                 cursor: pointer;
             }
             #resultContainer {
-                margin-top: 30px;
                 background-color: #ececec;
                 padding-bottom: 30px;
             }
@@ -95,14 +95,8 @@
            }
            function doneClicked() {
                 var submitSelected = document.createElement('form');
-                submitSelected.method = 'POST';
-                submitSelected.action = '/result';
-
-                var element1 = document.createElement('input');
-                element1.name = 'data-arraySelected';
-                element1.value = imageClicked.toString();
-
-                submitSelected.appendChild(element1);
+                submitSelected.method = 'GET';
+                submitSelected.action = '/';
 
                 document.body.appendChild(submitSelected);
 

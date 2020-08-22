@@ -94,11 +94,12 @@
                    document.getElementById(filename).style.backgroundColor = 'blue';
                }
             //    document.getElementById('demo').innerHTML = imageClicked.toString();
-               console.log(imageClicked)
+            //    console.log(imageClicked)
 
            }
            function doneClicked() {
                 var submitSelected = document.createElement('form');
+                submitSelected.id = 'form_js';
                 submitSelected.method = 'POST';
                 submitSelected.action = '/result';
 
@@ -109,6 +110,7 @@
                 submitSelected.appendChild(element1);
 
                 document.body.appendChild(submitSelected);
+                document.getElementById('form_js').style.display = 'none';
 
                 submitSelected.submit();
            }
@@ -136,7 +138,5 @@
         <div class="buttonContainer">
             <span class="buttonDone" onclick="doneClicked()">Combine & Submit</span>
         </div>
-
-        <p id="demo"></p>
    </body>
 </html>
