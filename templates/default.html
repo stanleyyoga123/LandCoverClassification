@@ -1,58 +1,46 @@
 <html>
     <head>
         <title>Scanner</title>
-        <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css2?family=Balsamiq+Sans&family=Bebas+Neue&family=Dosis:wght@500&display=swap" rel="stylesheet">
-
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <style>
+
             body {
-                background-color: #b4e1c5;
+                background-color: white;
             }
 
             h1 {
-                font-family: 'Roboto Slab', serif;
+                font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;;
             }
 
-
             .formBox {
-                background-color: #d8eeb8;
-                border-radius: 20px;
-                position: fixed;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
+                background-color: #ececec;
                 padding: 10px 50px 20px 50px;
-                filter:drop-shadow(5px 5px 10px black);
             }
 
             .pageTitle {
                 text-align: center;
-                margin-top: 0px;
-                font-size: 20px
+                margin: 20px;
+                cursor: context-menu;
 
-            }
-
-            .formContent {
-                padding-left: 20;
-                padding-top: 20;
-                padding-bottom: 10;
-                padding-right: 20;
-                font-family: 'Dosis', sans-serif;
-                font-size: 20px;
-                font-weight: 500;
             }
 
             .center {
-                height: 100%;
-                display: flex;
+                margin-top: 10px;
+                margin-bottom: 20px;
+                display:flex;
+                width: 100%;
                 align-items: center;
                 justify-content: center;
-            }
+                text-align: center;
 
+            }
             .form-input {
                 width: 250px;
                 padding: 20px;
+                background: #fff;
+                border: 2px dashed #555;
             }
+
 
             .form-input input {
                 display: none;
@@ -60,82 +48,122 @@
 
             .form-input label {
                 display: block;
-                width: 100%;
                 height: 50px;
+                margin-bottom: 5px;
                 line-height: 50px;
-                text-align: center;
-                background: #e6b9a1 ;
-                color: #000000;
-                font-size: 24px;
-                font-family: 'Dosis',sans-serif;
+                background: #333;
+                color: #fff;
+                font-size: 15px;
+                font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
                 text-transform: Uppercase;
                 font-weight: 600;
+                border: 1px solid #333;
                 border-radius: 10px;
                 cursor: pointer;
-                border: outset;
-                border-color: #dfa995;
+            }
+
+            .form-input label:hover {
+                color: #333;
+                background-color: #fff;
             }
 
             .form-input img {
-                width:100%;
-                display:none;
-                margin-top:10px;
+              display: none;
+              margin-top: 0px;
+            }
+
+            .submitButton {
+                text-align: center;
+                margin-top: 10px;
+                padding: 20px;
             }
 
             input[type = submit] {
-                display: block;
-                margin: 0 auto;
-                text-align: center;
-                font-weight: 600;
-                background-color: #b4e1c5;
-                border: outset;
-                border-color: #98e690;
-                color: black;
-                padding: 10px 24px;
-                cursor: pointer;
-                font-family:"Dosis",sans-serif;
-                font-size: 18px;
-                border-radius: 10px
+                color: green;
+                border: 1px solid green;
+                padding: 10px 30px;
+                border-radius: 10px;
+                font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
             }
+
+            input[type = submit]:hover {
+                color: white;
+                background-color: green;
+                cursor: pointer;
+            }
+
+            .formQty {
+                margin-top: 10px;
+                margin-bottom: 20px;
+                text-align: center;
+                width: 100%;
+                font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            }
+
+            .footer {
+                position: fixed;
+                left: 0;
+                bottom: 0;
+                width: 100%;
+                background-color: #ebffe5;
+                text-align: center
+            }
+
         </style>
     </head>
-   <body>
-    <div class = "formBox">
+    <body>
         <div class = "pageTitle">
             <h1>Welcome to Green Earth Scanner!</h1>
         </div>
-   <body>
-    <div class = "formContent">
-        <form action = "http://localhost:5000/" method = "POST" 
-            enctype = "multipart/form-data">
-            <label for = quantity>Estimation (between 1 and 10):</label>
-            <input type = "number" name = "quantity" min = "1" max = "10" required>
-            <br><br>
-            <div class="center">
-              <div class="form-input">
-                <label for="file-ip-1">Upload Image</label>
-                <input type="file" id="file-ip-1" name = "file" accept="image/*" onchange="showPreview(event);">
-                <div class="preview">
-                    <img id="file-ip-1-preview">
+
+        <form id = "form" action = "http://localhost:5000/" method = "POST" enctype = "multipart/form-data" onsubmit = "return validateForm()">
+            <div class = "formBox">
+                <div class = "formQty">
+                    <label for = quantity>Estimation (between 1 and 10):</label>
+                    <input type = "number" name = "quantity" min = "1" max = "10" required>
+                </div>
+                <div class="center">
+                    <div class="form-input">
+                    <label for="file-ip-1">Upload Image</label>
+                    <input type="file" id="file-ip-1" name = "file" accept="image/*" onchange="showPreview(event);" required>
+                    <div class="preview">
+                    <img id="file-ip-1-preview" >
                 </div>
               </div>
             </div>
-            <br>
-            <script type="text/javascript">
-                function showPreview(event){
-                if(event.target.files.length > 0){
-                    var src = URL.createObjectURL(event.target.files[0]);
-                    var preview = document.getElementById("file-ip-1-preview");
-                    preview.src = src;
-                    preview.style.display = "block";
-                    preview.style.maxHeight = 200;
-                    preview.style.maxWidth = 200;
-                  }
-                }
-            </script>
-            <br>
-            <input type = "submit" value = "Submit"/>
+                <script type="text/javascript">
+                    function showPreview(event){
+                        if(event.target.files.length > 0){
+                            var src = URL.createObjectURL(event.target.files[0]);
+                            var preview = document.getElementById("file-ip-1-preview");
+                            preview.src = src;
+                            preview.style.display = "block";
+                            preview.style.maxHeight = 200;
+                            preview.style.maxWidth = 200;
+                            preview.style.marginLeft = 'auto';
+                            preview.style.marginRight = 'auto';
+                        }
+                    }
+
+                    function validateForm() {
+                        var x = document.forms["upload"]["file"].value;
+                        if (x == "") {
+                            alert("Please upload an image");
+                        return false;
+                        }
+                    }
+
+                </script>
+            </div>
+
+            <div class = "submitButton">
+                <input type = "submit" value = "Submit">
+            </div>
+
         </form>
-    </div>
-   </body>
+
+        <footer class = "footer">
+            <img src = "{{ url_for('im_utils', filename = 'logo.png') }}" atl = "logo" class ="logo">
+        </footer>
+    </body>
 </html>

@@ -2,6 +2,12 @@
     <head>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <style>
+            body {
+                min-height: 400px;
+                margin-bottom: 200px;
+                clear: both;
+            }
+
             .allImagesContainer2 {
                 display: flex;
                 flex-flow: row wrap;
@@ -77,6 +83,15 @@
             .resultImageContainer {
                 text-align: center;
             }
+
+            .footer {
+                position: fixed;
+                left: 0;
+                bottom: 0;
+                width: 100%;
+                background-color: #ebffe5;
+                text-align: center
+            }
         </style>
     </head>
    <body>
@@ -138,5 +153,9 @@
         <div class="buttonContainer">
             <span class="buttonDone" onclick="doneClicked()">Combine & Submit</span>
         </div>
+
+        <footer class = "footer">
+            <img src = "{{ url_for('im_utils', filename = 'logo.png') }}" atl = "logo" class ="logo">
+        </footer>
    </body>
 </html>
