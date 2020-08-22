@@ -2,30 +2,36 @@
     <head>
         <title>Scanner</title>
         <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap" rel="stylesheet">
+        <!-- <link href="https://fonts.googleapis.com/css2?family=Balsamiq+Sans&display=swap" rel="stylesheet">" -->
+        <!-- <link href="https://fonts.googleapis.com/css2?family=Balsamiq+Sans&family=Bebas+Neue&display=swap" rel="stylesheet"> -->
+        <link href="https://fonts.googleapis.com/css2?family=Balsamiq+Sans&family=Bebas+Neue&family=Dosis:wght@500&display=swap" rel="stylesheet">
+
         <style>
             body {
                 background-color: #b4e1c5;
+                /*background-image: "{{ url_for('static', filename = 'backgroundFade.jpg') }}";*/
             }
 
             h1 {
                 font-family: 'Roboto Slab', serif;
             }
 
+
             .formBox {
                 background-color: #d8eeb8;
-                /*border: 5px solid black;*/
                 border-radius: 20px;
                 position: fixed;
                 top: 50%;
                 left: 50%;
                 transform: translate(-50%, -50%);
                 padding: 10px 50px 20px 50px;
+                filter:drop-shadow(5px 5px 10px black);
             }
 
             .pageTitle {
-                /*border: 5px solid black;*/
                 text-align: center;
                 margin-top: 0px;
+                font-size: 20px
 
             }
 
@@ -34,19 +40,22 @@
                 padding-top: 20;
                 padding-bottom: 10;
                 padding-right: 20;
+                font-family: 'Dosis', sans-serif;
+                font-size: 20px;
+                font-weight: 500;
             }
 
             .center {
-              height:100%;
-              display:flex;
-              align-items:center;
-              justify-content:center;
+              height: 100%;
+              display: flex;
+              align-items: center;
+              justify-content: center;
             }
             .form-input {
-              width:250px;
-              padding:20px;
-              background:#fff;
-              border:2px dashed #555;
+              width: 250px;
+              padding: 20px;
+              /*background: #fff;*/
+              /*border: 2px dashed #555;*/
             }
             .form-input input {
               display:none;
@@ -57,14 +66,17 @@
               height:50px;
               line-height:50px;
               text-align:center;
-              background:#333;
-              color:#fff;
-              font-size:15px;
-              font-family:"Open Sans",sans-serif;
+              background:#e6b9a1 ;
+              color:#000000;
+              font-size:24px;
+              font-family:'Dosis',sans-serif;
               text-transform:Uppercase;
               font-weight:600;
               border-radius:10px;
               cursor:pointer;
+              border: outset;
+              border-color: #dfa995;
+              /*box-shadow:5px 5px 10px black;*/
             }
 
             .form-input img {
@@ -73,15 +85,27 @@
               margin-top:10px;
             }
 
-            .submitButton {
+            input[type = submit] {
+                display: block;
+                margin: 0 auto;
                 text-align: center;
+                font-weight: 600;
+                background-color: #b4e1c5;
+                border: outset;
+                border-color: #98e690;
+                color: black;
+                padding: 10px 24px;
+                cursor: pointer;
+                font-family:"Dosis",sans-serif;
+                font-size: 18px;
+                border-radius: 10px
             }
         </style>
     </head>
    <body>
     <div class = "formBox">
         <div class = "pageTitle">
-            <h1>Welcome to Scanner!</h1>
+            <h1>Welcome to Green Earth Scanner!</h1>
         </div>
    <body>
     <div class = "formContent">
@@ -99,6 +123,7 @@
                 </div>
               </div>
             </div>
+            <br>
             <script type="text/javascript">
                 function showPreview(event){
                 if(event.target.files.length > 0){
@@ -109,10 +134,8 @@
                   }
                 }
             </script>
-            <br><br>
-            <div class = "submitButton">
-                <input type = "submit"/>
-            </div>
+            <br>
+            <input type = "submit" value = "Submit"/>
         </form>
     </div>
    </body>
