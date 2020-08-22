@@ -82,9 +82,6 @@
    <body>
        <script>
            var imageClicked = [];
-           var resultVisibility = 'hidden';
-           var resultVisibility = 'visible';
-           document.getElementById('resultContainer').style.visibility = resultVisibility;
 
            function buttonClicked(filename) {
                var idx = filename.split(".")[0]
@@ -112,19 +109,10 @@
                 submitSelected.appendChild(element1);
 
                 document.body.appendChild(submitSelected);
-                resultVisibility = 'visible';
 
                 submitSelected.submit();
            }
         </script>
-        <!-- <form action = "http://localhost:5000/uploader" method = "POST" 
-            enctype = "multipart/form-data">
-            <input type = "file" name = "file" />
-            <input type = "submit"/>
-        </form>
-        {% for hist in hists %}
-            <img src="{{url_for('static', filename=hist)}}" alt="{{hist}}" style="width:200px;height:200px;">
-        {% endfor %} -->
 
         <div class="finishedTitle">
             <span>Finished</span>
@@ -146,7 +134,7 @@
             {% endfor %}
         </div>
         <div class="buttonContainer">
-            <span class="buttonDone" onclick="doneClicked()">Done</span>
+            <span class="buttonDone" onclick="doneClicked()">Combine</span>
         </div>
 
         <div id="resultContainer">
