@@ -80,6 +80,15 @@
                }
                document.getElementById('demo').innerHTML = imageClicked.toString();
            }
+           function doneClicked() {
+                var submitSelected = document.createElement('form');
+                submitSelected.setAttribute('method', 'post');
+                submitSelected.setAttribute('action', '/kevin');
+                submitSelected.setAttribute('data-arraySelected', imageClicked.toString());
+                submitSelected.style.display = 'hidden';
+                document.body.appendChild(submitSelected);
+                submitSelected.submit();
+           }
         </script>
         <!-- <form action = "http://localhost:5000/uploader" method = "POST" 
             enctype = "multipart/form-data">
@@ -110,7 +119,7 @@
             {% endfor %}
         </div>
         <div class="buttonContainer">
-            <span class="buttonDone">Done</span>
+            <span class="buttonDone" onclick="doneClicked()">Done</span>
         </div>
         <p id="demo"></p>
    </body>
