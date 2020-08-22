@@ -30,6 +30,43 @@
                 padding-right: 20;
             }
 
+            .center {
+              height:100%;
+              display:flex;
+              align-items:center;
+              justify-content:center;
+            }
+            .form-input {
+              width:250px;
+              padding:20px;
+              background:#fff;
+              border:2px dashed #555;
+            }
+            .form-input input {
+              display:none;
+            }
+            .form-input label {
+              display:block;
+              width:100%;
+              height:50px;
+              line-height:50px;
+              text-align:center;
+              background:#333;
+              color:#fff;
+              font-size:15px;
+              font-family:"Open Sans",sans-serif;
+              text-transform:Uppercase;
+              font-weight:600;
+              border-radius:10px;
+              cursor:pointer;
+            }
+
+            .form-input img {
+              width:100%;
+              display:none;
+              margin-top:10px;
+            }
+
             .submitButton {
                 text-align: center;
             }
@@ -45,9 +82,27 @@
         <form action = "http://localhost:5000/uploader" method = "POST" 
             enctype = "multipart/form-data">
             <label for = quantity>Estimation (between 1 and 10):</label>
-            <input type = "number" name = "quantity" min = "1" max = "10">
-            <br>
-            <input type = "file" name = "file" />
+            <input type = "number" name = "quantity" min = "1" max = "10" required>
+            <br><br>
+            <div class="center">
+              <div class="form-input">
+                <label for="file-ip-1">Upload Image</label>
+                <input type="file" id="file-ip-1" name = "file" accept="image/*" onchange="showPreview(event);">
+                <div class="preview">
+                    <img id="file-ip-1-preview">
+                </div>
+              </div>
+            </div>
+            <script type="text/javascript">
+                function showPreview(event){
+                if(event.target.files.length > 0){
+                    var src = URL.createObjectURL(event.target.files[0]);
+                    var preview = document.getElementById("file-ip-1-preview");
+                    preview.src = src;
+                    preview.style.display = "block";
+                  }
+                }
+            </script>
             <br><br>
             <div class = "submitButton">
                 <input type = "submit"/>
