@@ -78,9 +78,17 @@
                 text-align: center;
                 font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
             }
+            .footer {
+                position: fixed;
+                left: 0;
+                bottom: 0;
+                width: 100%;
+                background-color: #ffffff;
+                text-align: center
+            }
         </style>
     </head>
-   <body>
+    <body>
        <script>
            var imageClicked = [];
 
@@ -134,5 +142,8 @@
         </div>
 
         <p id="demo"></p>
-   </body>
+    </body>
+    <footer class = "footer">
+        <img src = "{{ url_for('im_utils', filename = 'logo.png') }}" atl = "logo" class ="logo">
+    </footer>
 </html>

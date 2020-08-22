@@ -71,9 +71,9 @@ def show_image(filename):
 def show_result(filename):
     return send_from_directory('static', filename)
 
-@app.route('/utils/<filename>')
+@app.route('/logo/<filename>')
 def im_utils(filename):
-    return send_from_directory('utils', filename)
+    return send_from_directory('logo', filename)
 		
 if __name__ == '__main__':
    app.run(debug = True)
