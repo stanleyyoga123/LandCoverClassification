@@ -60,7 +60,7 @@ def combine_image():
 @app.route('/combine/<filename>', methods = ['POST', 'GET'])
 def final(filename):
     count = classifier.count_pix(os.path.join('result', filename))
-    print(round(count/30))
+    count = round(count/30)
     return render_template('finish.html', imp0rt = importlib.import_module, path=filename, count=count)
 
 @app.route('/result/<filename>')
