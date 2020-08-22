@@ -61,7 +61,7 @@ def combine_image():
 def final(filename):
     count = classifier.count_pix(os.path.join('result', filename))
     count = round(count/30)
-    return render_template('finish.html', imp0rt = importlib.import_module, path=filename, count=count)
+    return render_template('finish.html', imp0rt = importlib.import_module, path=filename, count=count, hai='hehe')
 
 @app.route('/result/<filename>')
 def show_image(filename):

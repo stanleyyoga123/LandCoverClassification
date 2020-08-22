@@ -73,6 +73,11 @@
             .resultImageContainer {
                 text-align: center;
             }
+            .countText {
+                margin-top: 10px;
+                text-align: center;
+                font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            }
         </style>
     </head>
    <body>
@@ -119,6 +124,9 @@
             <div class="combinedImageTitle">Combined Image</div>
             <div class="resultImageContainer">
                 <img src="{{ url_for('show_image', filename=path) }}" alt="">
+            </div>
+            <div class="countText">
+                You have planted {% print(count) %} trees. Good job !
             </div>
         </div>
         <div class="buttonContainer">
