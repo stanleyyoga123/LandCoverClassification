@@ -131,29 +131,20 @@
                 </div>
               </div>
             </div>
-                <script type="text/javascript">
-                    function showPreview(event){
-                        if(event.target.files.length > 0){
-                            var src = URL.createObjectURL(event.target.files[0]);
-                            var preview = document.getElementById("file-ip-1-preview");
-                            preview.src = src;
-                            preview.style.display = "block";
-                            preview.style.maxHeight = 200;
-                            preview.style.maxWidth = 200;
-                            preview.style.marginLeft = 'auto';
-                            preview.style.marginRight = 'auto';
-                        }
+            <script type="text/javascript">
+                function showPreview(event){
+                    if(event.target.files.length > 0){
+                        var src = URL.createObjectURL(event.target.files[0]);
+                        var preview = document.getElementById("file-ip-1-preview");
+                        preview.src = src;
+                        preview.style.display = "block";
+                        preview.style.maxHeight = 200;
+                        preview.style.maxWidth = 200;
+                        preview.style.marginLeft = 'auto';
+                        preview.style.marginRight = 'auto';
                     }
-
-                    function validateForm() {
-                        var x = document.forms["upload"]["file"].value;
-                        if (x == "") {
-                            alert("Please upload an image");
-                        return false;
-                        }
-                    }
-
-                </script>
+                }
+            </script>
             </div>
 
             <div class = "submitButton">

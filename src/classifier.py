@@ -35,6 +35,7 @@ def run(path, cluster, save=True):
         for i, image in enumerate(images):
             image = cv2.resize(image, (200,200))
             cv2.imwrite(os.path.join(IMAGES_FOLDER, f'{name}_{i}.png'), image)
+            # cv2.imwrite(f'{name}_{i}.png', image)
     
     return images
 
