@@ -27,10 +27,36 @@ def run(path, cluster, save=True):
             images[el][i][j] = red
     
     if(save):
+        name = path.split('\\')[-1].split('.')[0]
         for i, image in enumerate(images):
             image = cv2.resize(image, (200,200))
-            cv2.imwrite(os.path.join(IMAGES_FOLDER, f'{i}.png'), image)
+            cv2.imwrite(os.path.join(IMAGES_FOLDER, f'{name}_{i}.png'), image)
     
     return images
 
+def combine(index):
+    images = np.array([cv2.imread(os.path.join(IMAGES_FOLDER, path)) for path in os.listdir(IMAGES_FOLDER)])
+
+    image = images[0]
+    shape = image.shape
+
+    red = [0, 0, 255]
+
+    for i in range(shape[0]):
+        for j in range(shape[1]):
+            for k in index:
+                if((images[k][i][j] == red).all()):
+                    image[i][j] = red
+
+    return image
+
+def count_pix(filename):
+    image = cv2.imread(filename)
+    red = [0, 0, 255]
+    count = 0
+    for row in image:
+        for el in row:
+            if((el == red).all()):
+                count += 1
+    return count
 # run('images/image.png', 7)
