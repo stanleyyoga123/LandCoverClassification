@@ -7,7 +7,6 @@ import random
 import cv2
 import importlib
 
-
 app = Flask(__name__)
 
 UPLOAD_FOLDER = 'images'
