@@ -53,14 +53,10 @@
             }
             .buttonDone {
                 color: green;
-                border: 1px solid green;
-                padding: 10px 30px;
-                border-radius: 10px;
                 font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
             }
             .buttonDone:hover {
-                color: white;
-                background-color: green;
+                text-decoration: underline;
                 cursor: pointer;
             }
             #resultContainer {
@@ -115,26 +111,24 @@
         </script>
 
         <div class="finishedTitle">
-            <span>Finished</span>
-            <i class="fa fa-check-circle finishedIcon"></i>
+            <span>Thank You</span>
         </div>
-        <div class="descTitle">Your scanned image are shown below</div>
+        <div class="descTitle">for helping turn the earth into a better version</div>
+        <div class="descTitle">Have a nice day !</div>
 
 
 
         {% set os = imp0rt('os') %}
         {% set cv2 = imp0rt('cv2') %}
-
-        <div class="allImagesContainer2">
-            <div class="selectImageText">Select Images You Want to Combine</div>
-            {% for filename in os.listdir('./static') %}
-                <div class="imageContainer2" onclick="buttonClicked('{{ filename }}')" id="{{ filename }}">
-                    <img src="{{ url_for('show_result', filename=filename) }}" alt="{{ filename }}">
-                </div>
-            {% endfor %}
+        
+        <div id="resultContainer">
+            <div class="combinedImageTitle">Combined Image</div>
+            <div class="resultImageContainer">
+                <img src="{{ url_for('show_image', filename=path) }}" alt="">
+            </div>
         </div>
         <div class="buttonContainer">
-            <span class="buttonDone" onclick="doneClicked()">Combine & Submit</span>
+            <span class="buttonDone" onclick="doneClicked()">Back to Home</span>
         </div>
 
         <p id="demo"></p>
