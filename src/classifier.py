@@ -34,4 +34,20 @@ def run(path, cluster, save=True):
     
     return images
 
+def combine(index):
+    images = np.array([cv2.imread(os.path.join(IMAGES_FOLDER, path)) for path in os.listdir(IMAGES_FOLDER)])
+
+    image = images[0]
+    shape = image.shape
+
+    red = [0, 0, 255]
+
+    for i in range(shape[0]):
+        for j in range(shape[1]):
+            for k in index:
+                if((images[k][i][j] == red).all()):
+                    image[i][j] = red
+
+    return image
+
 # run('images/image.png', 7)

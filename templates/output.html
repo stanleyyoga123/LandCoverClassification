@@ -79,13 +79,20 @@
                    document.getElementById(filename).style.backgroundColor = 'blue';
                }
                document.getElementById('demo').innerHTML = imageClicked.toString();
+               console.log(imageClicked)
+
            }
            function doneClicked() {
                 var submitSelected = document.createElement('form');
-                submitSelected.setAttribute('method', 'post');
-                submitSelected.setAttribute('action', '/kevin');
-                submitSelected.setAttribute('data-arraySelected', imageClicked.toString());
-                submitSelected.style.display = 'hidden';
+                submitSelected.method = 'POST';
+                submitSelected.action = '/kevin';
+
+                var element1 = document.createElement('input');
+                element1.name = 'data-arraySelected';
+                element1.value = imageClicked.toString();
+
+                submitSelected.appendChild(element1);
+
                 document.body.appendChild(submitSelected);
                 submitSelected.submit();
            }
@@ -120,6 +127,10 @@
         </div>
         <div class="buttonContainer">
             <span class="buttonDone" onclick="doneClicked()">Done</span>
+        </div>
+
+        <div>
+            <img src="{{ url_for('show_image', filename=path) }}" alt="Result">
         </div>
         <p id="demo"></p>
    </body>

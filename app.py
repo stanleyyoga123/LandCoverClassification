@@ -4,6 +4,9 @@ import os
 from src import classifier
 import string
 import random
+import cv2
+import importlib
+
 
 app = Flask(__name__)
 
@@ -42,8 +45,27 @@ def upload_file():
 
 @app.route('/', methods = ['GET'])
 def main():
-    import importlib
     return render_template('output.html', imp0rt = importlib.import_module)
+
+@app.route('/kevin', methods = ['POST', 'GET'])
+def combine_image():
+    if request.method == 'POST':
+        selected = request.form['data-arraySelected']
+        selected = selected.split(',')
+        selected_image = [int(el.split('_')[1]) for el in selected]
+
+        image = classifier.combine(selected_image)
+        filename = generate_filename()
+        path = os.path.join('result', filename)
+        cv2.imwrite(path, image)
+
+        return render_template('output.html', imp0rt = importlib.import_module, path=filename)
+    else:
+        return render_template('default.html')
+
+@app.route('/result/<filename>')
+def show_image(filename):
+    return send_from_directory('result', filename)
 		
 if __name__ == '__main__':
    app.run(debug = True)
