@@ -59,4 +59,3 @@ def count_pix(filename):
             if((el == red).all()):
                 count += 1
     return count
-# run('images/image.png', 7)

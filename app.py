@@ -36,8 +36,8 @@ def upload_file():
         remove_files()
         f.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
         
-        classifier.run(os.path.join(UPLOAD_FOLDER, 'image.png'), estimator)
-        hists = [f'{filename[:-4]}_{i}.png' for i in range(ESTIMATOR)]
+        classifier.run(os.path.join(UPLOAD_FOLDER, filename), estimator)
+        hists = [f'{filename[:-4]}_{i}.png' for i in range(estimator)]
         return render_template('default.html', hists=hists) 
     else:
         return render_template('default.html')
