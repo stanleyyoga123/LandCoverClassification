@@ -50,4 +50,13 @@ def combine(index):
 
     return image
 
+def count_pix(filename):
+    image = cv2.imread(filename)
+    red = [0, 0, 255]
+    count = 0
+    for row in image:
+        for el in row:
+            if((el == red).all()):
+                count += 1
+    return count
 # run('images/image.png', 7)
