@@ -63,11 +63,29 @@
                 background-color: green;
                 cursor: pointer;
             }
+            #resultContainer {
+                margin-top: 30px;
+                background-color: #ececec;
+                padding-bottom: 30px;
+            }
+            .combinedImageTitle {
+                padding: 30px;
+                text-align: center;
+                font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+                font-size: 25px;
+            }
+            .resultImageContainer {
+                text-align: center;
+            }
         </style>
     </head>
    <body>
        <script>
            var imageClicked = [];
+           var resultVisibility = 'hidden';
+           var resultVisibility = 'visible';
+           document.getElementById('resultContainer').style.visibility = resultVisibility;
+
            function buttonClicked(filename) {
                var idx = filename.split(".")[0]
                if (imageClicked.includes(idx)) {
@@ -78,7 +96,7 @@
                    imageClicked.push(idx);
                    document.getElementById(filename).style.backgroundColor = 'blue';
                }
-               document.getElementById('demo').innerHTML = imageClicked.toString();
+            //    document.getElementById('demo').innerHTML = imageClicked.toString();
                console.log(imageClicked)
 
            }
@@ -94,6 +112,8 @@
                 submitSelected.appendChild(element1);
 
                 document.body.appendChild(submitSelected);
+                resultVisibility = 'visible';
+
                 submitSelected.submit();
            }
         </script>
@@ -129,9 +149,13 @@
             <span class="buttonDone" onclick="doneClicked()">Done</span>
         </div>
 
-        <div>
-            <img src="{{ url_for('show_image', filename=path) }}" alt="Result">
+        <div id="resultContainer">
+            <div class="combinedImageTitle">Combined Image</div>
+            <div class="resultImageContainer">
+                <img src="{{ url_for('show_image', filename=path) }}" alt="">
+            </div>
         </div>
+
         <p id="demo"></p>
    </body>
 </html>
